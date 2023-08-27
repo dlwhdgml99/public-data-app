@@ -1,0 +1,317 @@
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+  border:0;
+  background:none;
+}
+
+html {
+  overflow:hidden;
+}
+
+ul {
+  list-style:none;
+}
+
+.loaderContainer {
+  position:relative;
+}
+
+.loader {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.loadName {
+  font-size:1.3rem;
+  font-weight:bold;
+  color:#4587e3;
+  margin-bottom:0.5rem;
+}
+
+.loadCircle {
+  display:flex;
+}
+
+.circle{
+  width: 40px;
+  height: 40px;
+  background-color: #4587e3;
+  border-radius: 50%;
+  margin: 10px;
+  animation: bounce 0.5s ease-in infinite;
+  animation-direction: alternate;
+}
+
+.circle:nth-child(2){
+  animation-delay: 0.1s;
+  background-color:#79affa;
+}
+
+.circle:nth-last-child(3){
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  from{
+   transform: translateY(0);
+  }
+
+  to{
+   transform: translateY(10px);
+  }
+ }
+
+header {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:fixed;
+  width:100%;
+  height:4.5rem;
+  background-color:#4587e3;
+  z-index:100;
+}
+
+main {
+  display:flex;
+  position:relative;
+  padding-top:4.5rem;
+  background-color:#f0f0f0;
+  overflow:hidden;
+}
+
+.noData {
+  width:100%;
+  height:100vh;
+  text-align:center;
+  font-size:1.5rem;
+  font-weight:bold;
+  line-height:100vh;
+  margin-top:-4.5rem;
+}
+
+.total {
+  width:100%;
+  height:4rem;
+  padding:0 2.5rem;
+  line-height:4rem;
+}
+
+.total p span {
+  color:red;
+  text-decoration:underline;
+}
+
+.title {
+  display:inline-block;
+  vertical-align:middle;
+  font-size:1.3rem;
+  font-weight:bold;
+  color:#fff;
+  margin:0 0.7rem;
+}
+
+nav {
+  position:relative;
+}
+
+.yearName, .areaName {
+  display:inline-block;
+  vertical-align:middle;
+  width:10rem;
+  text-align:center;
+  border:1px solid #000;
+  background-color:#f0f0f0;
+}
+
+.yearName button, .areaName button {
+  width:100%;
+  height:2.3rem;
+  font-size:1rem;
+  font-weight:bold;
+  padding:0 0.5rem;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.yearName button:hover, .areaName button:hover {
+  background-color:#ddd;
+}
+
+.yearName button:after, .areaName button:after {
+  content:'▼';
+  float:right;
+}
+
+.yearName button.show:after, .areaName button.show:after {
+  content:'▲';
+}
+
+.yearSelect, .areaSelect {
+  position:absolute;
+  width:10rem;
+  max-height:60vh;
+  border:1px solid #000;
+  border-top:0;
+  background-color:#fff;
+  overflow-y:scroll;
+  z-index:10;
+}
+
+.yearSelect {
+  z-index:11;
+}
+
+.yearSelect li, .areaSelect li {
+  border-top:1px solid #000;
+}
+
+.yearSelect li:first-child, .areaSelect li:first-child {
+  border-top:0;
+}
+
+.yearSelect li:hover, .areaSelect li:hover {
+  background-color:#ddd;
+}
+
+.yearSelect li button, .areaSelect li button {
+  width:100%;
+  text-align:left;
+  padding:0.5rem 1rem;
+  cursor:pointer;
+}
+
+.hidden {
+  display:none;
+}
+
+.rechartContainer {
+  width:50%;
+  height:calc(100vh - 4rem);
+  display: flex;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.rechart {
+  width:100%;
+  height:100%;
+  max-height:600px;
+  padding:0 1rem 4rem 0;
+}
+
+.recharts-responsive-container {
+  min-width:100px;
+}
+
+.rechart .recharts-surface {
+  overflow:inherit;
+}
+
+#react-kakao-maps-sdk-map-container {
+  width:50%;
+  height:100vh;
+  margin-top:-4.5rem;
+}
+
+.recharts-layer.recharts-cartesian-axis.recharts-xAxis.xAxis,
+.recharts-layer.recharts-cartesian-axis-tick {
+  white-space: pre-wrap;
+  font-size:0.8rem
+}
+
+.recharts-legend-wrapper {
+  width:100%;
+  padding-left:0.5rem;
+}
+
+
+/* tablet - 1024 */
+@media screen and (max-width:1024px) {
+  html {
+    overflow:auto;
+  }
+
+  main {
+    flex-direction:column;
+    overflow:auto;
+  }
+
+  .total {
+    width:100%;
+  }
+
+  .rechartContainer {
+    justify-content:flex-start;
+    width:100%;
+    height:500px;
+  }
+
+  .rechart {
+    width:100%;
+    padding-bottom:4rem;
+    margin-left:-1rem;
+  }
+
+  #react-kakao-maps-sdk-map-container {
+    width:100%;
+    height:500px;
+    margin-top:0;
+    overflow:auto;
+  }
+}
+
+/* mobile - 780 */
+@media screen and (max-width:780px) {
+  header {
+    height:7.5rem;
+    flex-direction:column;
+  }
+
+  nav:first-child {
+    margin-bottom:0.5rem;
+  }
+
+  .title {
+    font-size:1rem;
+  }
+
+  main {
+    padding-top:7.5rem;
+  }
+
+  .total {
+    width:100%;
+  }
+
+  .yearName, .areaName {
+    width:8rem;
+  }
+
+  .yearName button, .areaName button {
+    height:2rem;
+    padding:0 0.4rem;
+  }
+
+  .areaSelect, .yearSelect {
+    width:8rem;
+  }
+
+  .recharts-layer.recharts-cartesian-axis.recharts-xAxis.xAxis, .recharts-layer.recharts-cartesian-axis-tick {
+    font-size:0.7rem;
+  }
+
+  .recharts-legend-wrapper {
+    font-size:0.8rem;
+    margin-left:1rem;
+    padding-left:0;
+  }
+}
